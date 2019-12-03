@@ -17,6 +17,7 @@ from alipay.aop.api.AlipayClientConfig import AlipayClientConfig
 from alipay.aop.api.DefaultAlipayClient import DefaultAlipayClient
 from alipay.aop.api.domain.AlipayTradeCreateModel import AlipayTradeCreateModel
 from alipay.aop.api.request.AlipayTradePagePayRequest import AlipayTradePagePayRequest
+from django.views.decorators.csrf import csrf_exempt
 
 logging.basicConfig(
     level=logging.INFO,
@@ -69,3 +70,66 @@ class Alipay:
             response_url = None
             print('err', e)
         return response_url
+
+
+@csrf_exempt
+def index(request):
+    # if request.method == "GET":
+    #     return render(request, 'index.html')
+    # price = request.POST.get("price")
+    # import datetime
+    # no = datetime.datetime.now().strftime('%Y%m%d%H%M%S%f')
+    # print(no, type(no))
+    # response_url = create_trade(price, no, '2')
+    # if response_url:
+    #     return redirect(response_url)
+    pass
+
+
+@csrf_exempt
+def update_order(request):
+    """
+    支付成功后，支付宝向该地址发送的POST请求（用于修改订单状态）
+    :param request:
+    :return:
+    """
+    # if request.method == 'POST':
+    #     body_str = request.body.decode('utf-8')
+    #     post_data = parse_qs(body_str)
+    #
+    #     post_dict = {}
+    #     for k, v in post_data.items():
+    #         post_dict[k] = v[0]
+    #
+    #     alipay = aliPay()
+    #
+    #     sign = post_dict.pop('sign', None)
+    #     status = alipay.verify(post_dict, sign)
+    #     if status:
+    #         # 1.修改订单状态
+    #         out_trade_no = post_dict.get('out_trade_no')
+    #         print(out_trade_no)
+    #         # 2. 根据订单号将数据库中的数据进行更新
+    #         return HttpResponse('支付成功')
+    #     else:
+    #         return HttpResponse('支付失败')
+    return HttpResponse('')
+
+
+@csrf_exempt
+def pay_result(request):
+    """
+    支付完成后，跳转回的地址
+    :param request:
+    :return:
+    """
+    # params = request.GET.dict()
+    # sign = params.pop('sign', None)
+    #
+    # alipay = aliPay()
+    #
+    # status = alipay.verify(params, sign)
+    #
+    # if status:
+    #     return HttpResponse('支付成功')
+    return HttpResponse('支付失败')

@@ -121,9 +121,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
-ALIPAY_PUBLIC = os.path.join(BASE_DIR, 'payback', 'keys', 'alipay_public.txt')
-APP_PUBLIC = os.path.join(BASE_DIR, 'payback', 'keys', 'app_public.txt')
-APP_PRIVATE = os.path.join(BASE_DIR, 'payback', 'keys', 'app_private.txt')
+ALIPAY_PUBLIC = os.path.join(BASE_DIR, 'myshop', 'keys', 'alipay_public.txt')
+APP_PUBLIC = os.path.join(BASE_DIR, 'myshop', 'keys', 'app_public.txt')
+APP_PRIVATE = os.path.join(BASE_DIR, 'myshop', 'keys', 'app_private.txt')
 APPID = "2016101700707173",  # 支付宝沙箱里面的APPID，需要改成你自己的
 APP_notify_url = "http://127.0.0.1:8000/update_order/",
 # 如果支付成功，支付宝会向这个地址发送POST请求（校验是否支付已经完成），此地址要能够在公网进行访问，需要改成你自己的服务器地址
