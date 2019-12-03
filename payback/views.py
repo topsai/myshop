@@ -90,26 +90,26 @@ def update_order(request):
     :param request:
     :return:
     """
-    if request.method == 'POST':
-        body_str = request.body.decode('utf-8')
-        post_data = parse_qs(body_str)
-
-        post_dict = {}
-        for k, v in post_data.items():
-            post_dict[k] = v[0]
-
-        alipay = aliPay()
-
-        sign = post_dict.pop('sign', None)
-        status = alipay.verify(post_dict, sign)
-        if status:
-            # 1.修改订单状态
-            out_trade_no = post_dict.get('out_trade_no')
-            print(out_trade_no)
-            # 2. 根据订单号将数据库中的数据进行更新
-            return HttpResponse('支付成功')
-        else:
-            return HttpResponse('支付失败')
+    # if request.method == 'POST':
+    #     body_str = request.body.decode('utf-8')
+    #     post_data = parse_qs(body_str)
+    #
+    #     post_dict = {}
+    #     for k, v in post_data.items():
+    #         post_dict[k] = v[0]
+    #
+    #     alipay = aliPay()
+    #
+    #     sign = post_dict.pop('sign', None)
+    #     status = alipay.verify(post_dict, sign)
+    #     if status:
+    #         # 1.修改订单状态
+    #         out_trade_no = post_dict.get('out_trade_no')
+    #         print(out_trade_no)
+    #         # 2. 根据订单号将数据库中的数据进行更新
+    #         return HttpResponse('支付成功')
+    #     else:
+    #         return HttpResponse('支付失败')
     return HttpResponse('')
 
 
@@ -120,13 +120,13 @@ def pay_result(request):
     :param request:
     :return:
     """
-    params = request.GET.dict()
-    sign = params.pop('sign', None)
-
-    alipay = aliPay()
-
-    status = alipay.verify(params, sign)
-
-    if status:
-        return HttpResponse('支付成功')
+    # params = request.GET.dict()
+    # sign = params.pop('sign', None)
+    #
+    # alipay = aliPay()
+    #
+    # status = alipay.verify(params, sign)
+    #
+    # if status:
+    #     return HttpResponse('支付成功')
     return HttpResponse('支付失败')
