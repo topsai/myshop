@@ -117,15 +117,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# 在服务器上运行 collectstatic，将所有的静态文件拷贝至 STATIC_ROOT。（所以不应该在该目录下面放置自己的一些静态文件，因为会覆盖掉）
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-a = os.path.join(BASE_DIR, "static/")
+# STATICFILES_DIRS 用以放置开发用的静态文件，开发时会被自动收集， settings.DEBUG is False 这个选项就不生效了
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, "static"),
 # ]
 
-print("a", a)
-print("BASE_DIR", BASE_DIR)
-print("STATIC_ROOT", STATIC_ROOT)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
